@@ -1,2 +1,89 @@
 # 2025003022-FinalProject
-Android期末大作业 MovieHubPro电影App
+MovieHubPro 电影资讯App —— 移动端软件开发期末大作业
+
+MovieHubPro 是一款基于 Jetpack Compose 现代技术栈构建的沉浸式电影资讯 App。本项目作为移动端软件开发课程的期末大作业，不仅实现了完整的数据增删改查（CRUD）逻辑，更深度集成了全球最大的电影数据库 TMDB API，提供了服务端级别的多维筛选、分页加载、离线缓存以及高效的收藏管理功能。
+
+🌟 核心亮点 (Key Features)
+1. 首页：商业级多维动态布局
+• Hero Banner：沉浸式巨幕轮播，展示全网最热影片，带自动渐变遮罩。
+• 本周趋势：横向滚动推荐，利用阴影和层级营造呼吸感。
+• 快捷分类：内置 8 种高频电影类别（动作、科幻、动画等），一键触达目标。
+• 无限分页：所有列表均支持滑到底部自动加载下一页数据，体验丝滑。
+
+2. 详情页：沉浸式视觉体验
+• Edge-to-Edge：背景大图直接穿透至系统状态栏，极具视觉冲击力。
+• 交互闭环：支持查看剧情简介（自适应展开）、查看相似电影推荐。
+
+3. 分类频道：全库级别筛选
+• 服务端驱动：对接 Discover API，支持“类型 + 地区 + 年份”三位一体的交叉实时过滤。
+• 精准匹配：实现了原始语言代码到中文标签（华语、欧美、日韩等）的深度映射。
+
+4. 收藏库：高效管理模式
+• 批量管理：特有“管理模式”，支持勾选多部影片一键批量取消收藏。
+• 本地检索：支持对收藏内容的模糊搜索与年份筛选，响应速度达毫秒级。
+
+5. 架构与性能：离线优先
+• 三级缓存：网络 -> Room 数据库 -> StateFlow 内存，确保无网状态下 App 依然“有内容可看”。
+• 网络监听：实时检测网络连接，断网时自动显示离线 Banner 提示。
+• 极致优化：支持图片 Crossfade 淡入、搜索请求 400ms 防抖、分页去重保护。
+
+🛠 技术栈 (Tech Stack)
+| 维度 | 技术选型 |
+| ---- | ---- |
+| 开发语言 | Kotlin |
+| UI 框架 | Jetpack Compose (100% 无XML布局) |
+| 视觉规范 | Material Design 3 (M3) |
+| 架构模式 | MVVM + Repository + 单向数据流UDF |
+| 网络请求 | Retrofit 2 + OkHttp 4 |
+| 数据持久化 | Room（双数据表）+ DataStore (偏好存储) |
+| 异步处理 | Kotlin Coroutines + Flow / StateFlow |
+| 依赖注入 | AppContainer 手动依赖注入 |
+| 图片加载 | Coil 图片异步加载 |
+
+📂 项目结构 (Project Structure)
+```
+app/src/main/java/com/example/moviehubpro/
+├── data/
+│   ├── api/            # Retrofit 接口、网络DTO实体
+│   ├── db/             # Room数据库、Entity、DAO
+│   ├── repository/     # 数据仓库，统一协调网络与本地数据库
+│   └── datastore/      # 主题偏好、搜索历史持久化
+├── model/              # 业务领域模型
+├── ui/
+│   ├── screen/         # 首页、分类、收藏、详情页面
+│   ├── screen/viewmodel # 各页面独立ViewModel
+│   ├── components/    # 通用复用UI组件（骨架屏、错误页、搜索栏等）
+│   └── theme/         # M3深浅色主题配置
+├── navigation/         # Compose导航路由管理
+├── util/               # 工具类、网络状态监听、常量
+└── MainActivity.kt     # 应用入口、全局导航容器
+```
+
+🚀 快速开始 (Quick Start)
+1. 环境要求：
+◦ Android Studio Jellyfish 及以上版本
+◦ JDK 17
+◦ 最低适配 Android 7.0 (API 24)
+◦ 编译SDK 34
+
+2. 获取代码：
+
+git clone https://github.com/starry0616/2025003022-FinalProject.git
+
+
+3. 构建运行：
+◦ 使用Android Studio打开项目，等待Gradle自动同步依赖
+◦ 启动模拟器或连接开启USB调试的安卓真机
+◦ 点击Run按钮编译安装App
+◦ 备注：项目内置TMDB请求密钥，可直接发起网络请求；境外API国内访问不稳定时自动切换Room缓存/Mock数据展示完整功能
+
+📷 运行截图说明
+完整运行截图存放于课程提交压缩包内的 `screenshots` 文件夹，包含：首页轮播、分类筛选、沉浸式详情页、收藏批量管理页面。GitHub仓库不存放图片以缩减仓库体积。
+
+
+📄 许可声明
+本项目仅供移动端软件开发课程期末作业学术评估使用，影片数据版权归 TMDB 官方所有，禁止商用。
+
+作者：柳航
+学号：2025003022
+提交日期：2026-07-03

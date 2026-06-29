@@ -78,7 +78,29 @@ git clone https://github.com/starry0616/2025003022-FinalProject.git
 ◦ 备注：项目内置TMDB请求密钥，可直接发起网络请求；境外API国内访问不稳定时自动切换Room缓存/Mock数据展示完整功能
 
 📷 运行截图说明
-完整运行截图存放于课程提交压缩包内的 `screenshots` 文件夹，包含：首页轮播、分类筛选、沉浸式详情页、收藏批量管理页面。GitHub仓库不存放图片以缩减仓库体积。
+📷 运行截图说明
+# 项目运行截图
+## 1. 首页页面
+![首页展示](screenshots/home.png)
+
+## 2. 分类筛选页面
+![分类多条件筛选](screenshots/category_filter.png)
+
+## 3. 电影详情页
+![沉浸式电影详情](screenshots/detail.png)
+
+## 4. 收藏管理页面
+![收藏批量管理](screenshots/favorite_manage.png)
+
+## 5. 深色模式效果
+![深色主题](screenshots/dark_mode.png)
+
+## 6. 离线无网提示页面
+![离线缓存模式](screenshots/offline_mode.png)
+
+## 7. 影片搜索页面
+![搜索界面1](screenshots/search.png)
+![搜索界面2](screenshots/search1.png)
 
 
 📄 许可声明

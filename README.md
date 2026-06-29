@@ -59,27 +59,67 @@ app/src/main/java/com/example/moviehubpro/
 └── MainActivity.kt     # 应用入口、全局导航容器
 ```
 
-🚀 快速开始 (Quick Start)
-1. 环境要求：
-◦ Android Studio Jellyfish 及以上版本
-◦ JDK 17
-◦ 最低适配 Android 7.0 (API 24)
-◦ 编译SDK 34
-
-2. 获取代码：
-
+## ⚙️ 配置与构建
+### 1. 下载项目
+```shell
 git clone https://github.com/starry0616/2025003022-FinalProject.git
+cd 2025003022-FinalProject
+```
 
+### 2. 配置 Android SDK
+项目根目录新建/修改 `local.properties`，填入本机SDK路径：
+#### Windows
+```properties
+sdk.dir=C:\\Users\\您的用户名\\AppData\\Local\\Android\\Sdk
+```
+#### macOS
+```properties
+sdk.dir=/Users/您的用户名/Library/Android/sdk
+```
 
-3. 构建运行：
-◦ 使用Android Studio打开项目，等待Gradle自动同步依赖
-◦ 启动模拟器或连接开启USB调试的安卓真机
-◦ 点击Run按钮编译安装App
-◦ 备注：项目内置TMDB请求密钥，可直接发起网络请求；境外API国内访问不稳定时自动切换Room缓存/Mock数据展示完整功能
+### 3. 配置 TMDB API Key
+项目内置演示密钥，无需修改即可运行；如需替换，修改常量文件：
+```kotlin
+// com.example.moviehubpro.util.Constants.kt
+const val API_KEY = "您的_TMDB_API_KEY"
+```
+> 无有效Key时自动加载本地Mock模拟数据，完整功能可正常演示
 
-📷 运行截图说明
-📷 运行截图说明
-# 项目运行截图
+---
+
+# 🚀 运行项目
+## 方式1：Android Studio 可视化运行
+1. Android Studio Jellyfish 及以上版本打开项目根目录
+2. Gradle 设置中将JDK版本切换为 **JDK 17**
+3. 等待依赖同步完成
+4. 连接模拟器/真机，点击 `Run 'app'` 编译安装
+
+## 方式2：命令行打包构建
+### Windows
+```cmd
+gradlew.bat assembleDebug
+```
+### macOS / Linux
+```bash
+./gradlew assembleDebug
+```
+打包后Debug APK路径：`app/build/outputs/apk/debug/app-debug.apk`
+
+---
+
+# 🔍 Room 本地数据库查看
+App启动后可查看缓存、收藏数据表：
+1. 顶部菜单 `View` → `Tool Windows` → `App Inspection`
+2. 切换至 `Database Inspector`，选中当前应用进程
+3. 常用查询SQL示例
+```sql
+-- 查询所有华语收藏影片
+SELECT * FROM favorite_movies WHERE originalLanguage = 'zh';
+-- 按评分降序查看本地缓存影片
+SELECT * FROM movie_cache ORDER BY voteAverage DESC;
+```
+
+##📷 运行截图说明
 ## 1. 首页页面
 ![首页展示](screenshots/home.png)
 
@@ -106,6 +146,5 @@ git clone https://github.com/starry0616/2025003022-FinalProject.git
 📄 许可声明
 本项目仅供移动端软件开发课程期末作业学术评估使用，影片数据版权归 TMDB 官方所有，禁止商用。
 
-作者：柳航
 学号：2025003022
-提交日期：2026-07-03
+提交日期：2026-06-29
